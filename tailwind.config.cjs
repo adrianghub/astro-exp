@@ -1,13 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 
-function withOpacity(variableName) {
-  return ({ opacityValue }) => {
-    if (opacityValue !== undefined) {
-      return `rgba(var(${variableName}), ${opacityValue})`;
-    }
-    return `rgb(var(${variableName}))`;
-  };
+function resolveHex(variableName) {
+    return `var(${variableName})`;
 }
+
+
 
 
 module.exports = {
@@ -18,36 +15,36 @@ module.exports = {
     },
     textColor: {
       skin: {
-        base: withOpacity("--color-text-base"),
-        accent: withOpacity("--color-accent"),
-        inverted: withOpacity("--color-fill"),
+        base: resolveHex("--color-text-base"),
+        accent: resolveHex("--color-accent"),
+        inverted: resolveHex("--color-fill"),
       },
     },
     backgroundColor: {
       skin: {
-        fill: withOpacity("--color-fill"),
-        accent: withOpacity("--color-accent"),
-        inverted: withOpacity("--color-text-base"),
-        card: withOpacity("--color-card"),
-        "card-muted": withOpacity("--color-card-muted"),
+        fill: resolveHex("--color-fill"),
+        accent: resolveHex("--color-accent"),
+        inverted: resolveHex("--color-text-base"),
+        card: resolveHex("--color-card"),
+        "card-muted": resolveHex("--color-card-muted"),
       },
     },
     outlineColor: {
       skin: {
-        fill: withOpacity("--color-accent"),
+        fill: resolveHex("--color-accent"),
       },
     },
     borderColor: {
       skin: {
-        line: withOpacity("--color-border"),
-        fill: withOpacity("--color-text-base"),
-        accent: withOpacity("--color-accent"),
+        line: resolveHex("--color-border"),
+        fill: resolveHex("--color-text-base"),
+        accent: resolveHex("--color-accent"),
       },
     },
     fill: {
       skin: {
-        base: withOpacity("--color-text-base"),
-        accent: withOpacity("--color-accent"),
+        base: resolveHex("--color-text-base"),
+        accent: resolveHex("--color-accent"),
       },
       transparent: "transparent",
     },

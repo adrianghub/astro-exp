@@ -5,7 +5,7 @@ import Layout from '@layouts/Layout.astro';
 import getSortedArticles from '@utils/getSortedArticles';
 import { getCollection } from 'astro:content';
 
-changeLanguage('en');
+changeLanguage('pl');
 
 const articles = await getCollection('journal');
 const sortedArticles = getSortedArticles(articles);

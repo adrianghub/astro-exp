@@ -1,17 +1,25 @@
 ---
 export interface Props {
   href: string;
+  type?: string;
   className?: string;
   ariaLabel?: string;
   title?: string;
   disabled?: boolean;
 }
 
-const { href, className, ariaLabel, title, disabled = false } = Astro.props;
+const {
+  href,
+  type,
+  className,
+  ariaLabel,
+  title,
+  disabled = false
+} = Astro.props;
 ---
 
 <a
-  type="button"
+  type={type}
   href={disabled ? '#' : href}
   tabindex={disabled ? '-1' : '0'}
   class={`group ${className}`}
@@ -24,6 +32,10 @@ const { href, className, ariaLabel, title, disabled = false } = Astro.props;
 
 <style>
   a {
+    @apply hover:text-skin-accent;
+  }
+
+  a[type='button'] {
     @apply hover:text-skin-accent;
   }
 </style>
