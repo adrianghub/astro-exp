@@ -15,8 +15,8 @@
     "astro": "astro",
     "format:check": "prettier --check .",
     "format": "prettier --write .",
-    "prepare": "husky install",
-    "i18n:generate": "astro-i18next generate"
+    "i18n:generate": "astro-i18next generate",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.2",
