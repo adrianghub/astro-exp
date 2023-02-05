@@ -5,6 +5,11 @@ import Layout from '@layouts/Layout.astro';
 import getSortedArticles from '@utils/getSortedArticles';
 import { getCollection } from 'astro:content';
 import Footer from '@components/Footer.astro';
+import Link from '@components/Link.astro';
+import Socials from '@components/Socials.astro';
+import Hr from '@components/Hr.astro';
+import Card from '@components/Card';
+import slugify from '@utils/slugify';
 
 changeLanguage('pl');
 
@@ -16,7 +21,57 @@ const featuredArticles = sortedArticles.filter(({ data }) => data.featured);
 <Layout title={t('pageTitle')}>
   <Header />
 
-  <!-- content -->
+  <main id="main-section">
+    <section id="hero" class="pt-8 pb-6">
+      <h1 class="my-4 inline-block text-3xl font-bold sm:my-8 sm:text-5xl">
+        {t('hero.title')}
+      </h1>
+
+      <p class="my-2">
+        Zajrzyj na <Link className="hover:text-skin-accent underline underline-offset-4 decoration-dashed whitespace-normal" href="/resume.pdf">artykuły</Link> lub
+        odwiedź stronę <Link className="hover:text-skin-accent underline underline-offset-4 decoration-dashed whitespace-normal" href="/resume.pdf">
+          {t('header.links.about')}
+        </Link>
+        po więcej informacji.
+      </p>
+
+      <div class="flex flex-col sm:flex-row sm:items-center">
+        <div class="mr-2 mb-2 whitespace-nowrap sm:mb-0">Znajdziesz mnie w social mediach:</div>
+        <Socials />
+      </div>
+    </section>
+
+    <Hr />
+
+    {
+      featuredArticles.length > 0 && (
+        <>
+          <section id="featured" class="pt-12 pb-6">
+            <h2 class="text-2xl font-semibold tracking-wide">Wyróżnione artykuły</h2>
+            <ul>
+              {featuredArticles.map(({ data }) => (
+                <Card href={`/articles/${slugify(data)}`} frontmatter={data} secHeading={false} />
+              ))}
+            </ul>
+          </section>
+          <Hr />
+        </>
+      )
+    }
+
+    <section id="recent-posts" class="pt-12 pb-6">
+      <h2 class="text-2xl font-semibold tracking-wide">Ostatnie artykuły</h2>
+      <ul>
+        {sortedArticles.map(({ data }, index) => index < 4 && <Card href={`/posts/${slugify(data)}`} frontmatter={data} secHeading={false} />)}
+      </ul>
+      <div class="my-8 text-center">
+        <Link href="/posts">
+          Wszystkie artykuły
+          <svg xmlns="http://www.w3.org/2000/svg"><path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"></path></svg>
+        </Link>
+      </div>
+    </section>
+  </main>
 
   <Footer />
 </Layout>

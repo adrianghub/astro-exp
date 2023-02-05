@@ -12,18 +12,14 @@ export interface Props {
 const { activeNav } = Astro.props;
 ---
 
-<header class="sticky top-0 backdrop-blur-sm">
+<header class="sticky top-0 bg-skin-fill">
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
       <Link href="/" className="logo">{t('header.title')}</Link>
       <nav id="nav-menu" class="nav-menu">
-        <button
-          class="hamburger-menu focus-outline"
-          aria-label="Open Menu"
-          aria-expanded="false"
-          aria-controls="menu-items"
-        >
+        <!-- Mobile menu -->
+        <button class="hamburger-menu focus-outline" aria-label="Open Menu" aria-expanded="false" aria-controls="menu-items">
           <div class="icon-container flex">
             <div id="first-line"></div>
             <div id="second-line"></div>
@@ -32,10 +28,7 @@ const { activeNav } = Astro.props;
         </button>
         <ul id="menu-items" class="display-none sm:flex">
           <li>
-            <Link
-              href="/articles"
-              className={activeNav === 'articles' ? 'active' : ''}
-            >
+            <Link href="/articles" className={activeNav === 'articles' ? 'active' : ''}>
               {t('header.links.articles')}
             </Link>
           </li>
@@ -45,10 +38,7 @@ const { activeNav } = Astro.props;
             </Link>
           </li>
           <li>
-            <Link
-              href="/about"
-              className={activeNav === 'about' ? 'active' : ''}
-            >
+            <Link href="/about" className={activeNav === 'about' ? 'active' : ''}>
               {t('header.links.about')}
             </Link>
           </li>
@@ -56,9 +46,7 @@ const { activeNav } = Astro.props;
             <Link
               type="button"
               href="/search"
-              className={`focus-outline p-3 sm:p-1 ${
-                activeNav === 'search' ? 'active' : ''
-              }`}
+              className={`focus-outline p-3 sm:p-1 ${activeNav === 'search' ? 'active' : ''}`}
               ariaLabel="search"
               title="Search"
             >
@@ -68,13 +56,7 @@ const { activeNav } = Astro.props;
           <li>
             {
               SITE.lightAndDarkMode && (
-                <button
-                  id="theme-btn"
-                  class="focus-outline"
-                  title="Toggles light & dark"
-                  aria-label="auto"
-                  aria-live="polite"
-                >
+                <button id="theme-btn" class="focus-outline" title="Toggles light & dark" aria-label="auto" aria-live="polite">
                   <Icon name="ri:moon-clear-line" id="moon-svg" />
                   <Icon name="ph:sun-dim" id="sun-svg" />
                 </button>
@@ -102,23 +84,23 @@ const { activeNav } = Astro.props;
     @apply absolute	w-fit whitespace-nowrap text-xl font-semibold sm:static sm:text-2xl;
   }
   .hamburger-menu {
-    @apply self-end p-2 sm:hidden;
+    @apply self-end p-2 pr-0 sm:hidden;
   }
   .hamburger-menu svg {
     @apply h-6 w-6 scale-125 fill-skin-base;
   }
 
   nav {
-    @apply flex w-full flex-col items-center bg-skin-fill sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
+    @apply flex w-full flex-col items-center sm:ml-2 sm:flex-row sm:justify-end sm:space-x-4 sm:py-0;
   }
   nav ul {
-    @apply mt-4 grid w-44 grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:mt-0 sm:ml-0 sm:w-auto sm:gap-y-0 sm:gap-x-5;
+    @apply grid h-[95vh] w-44 grid-cols-2 grid-rows-4 gap-y-2 gap-x-2 sm:ml-0 sm:h-auto sm:w-auto sm:gap-y-0 sm:gap-x-5;
   }
   nav ul li {
     @apply col-span-2 flex items-center justify-center;
   }
   nav ul li a {
-    @apply w-full px-4 py-3 text-center font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1;
+    @apply w-full px-4 py-3 text-center text-2xl font-medium hover:text-skin-accent sm:my-0 sm:px-2 sm:py-1 sm:text-base;
   }
   nav ul li:nth-child(4) a {
     @apply w-auto;
@@ -181,6 +163,8 @@ const { activeNav } = Astro.props;
       menuBtn?.setAttribute('aria-label', 'Close Menu');
       menuItems?.remove('display-none');
 
+      document.body?.classList.add('!fixed');
+
       // icon animation
       iconContainer?.remove('flex');
       iconContainer?.add('relative');
@@ -191,6 +175,8 @@ const { activeNav } = Astro.props;
       menuBtn?.setAttribute('aria-expanded', 'false');
       menuBtn?.setAttribute('aria-label', 'Open Menu');
       menuItems?.add('display-none');
+
+      document.body?.classList.remove('!fixed');
 
       // icon animation
       iconContainer?.add('flex');

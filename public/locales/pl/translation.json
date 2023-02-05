@@ -8,5 +8,8 @@
       "tags": "Tagi",
       "contact": "Kontakt"
     }
+  },
+  "hero": {
+    "title": "Software Developer"
   }
 }

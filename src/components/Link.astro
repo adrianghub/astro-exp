@@ -8,14 +8,7 @@ export interface Props {
   disabled?: boolean;
 }
 
-const {
-  href,
-  type,
-  className,
-  ariaLabel,
-  title,
-  disabled = false
-} = Astro.props;
+const { href, type, className, ariaLabel, title, disabled = false } = Astro.props;
 ---
 
 <a
@@ -25,10 +18,8 @@ const {
   class={`group ${className}`}
   aria-label={ariaLabel}
   title={title}
-  aria-disabled={disabled}
+  aria-disabled={disabled}><slot /></a
 >
-  <slot />
-</a>
 
 <style>
   a {

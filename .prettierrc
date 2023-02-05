@@ -2,13 +2,9 @@
   "semi": true,
   "trailingComma": "none",
   "singleQuote": true,
-  "printWidth": 80,
+  "printWidth": 160,
 
-  "plugins": [
-    "prettier-plugin-astro",
-    "prettier-plugin-organize-imports",
-    "prettier-plugin-tailwindcss"
-  ],
+  "plugins": ["prettier-plugin-astro", "prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
   "pluginSearchDirs": false,
   "tailwindConfig": "./tailwind.config.cjs"
 }
