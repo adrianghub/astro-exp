@@ -4,8 +4,9 @@ import Header from '@components/Header.astro';
 import Layout from '@layouts/Layout.astro';
 import getSortedArticles from '@utils/getSortedArticles';
 import { getCollection } from 'astro:content';
+import Footer from '@components/Footer.astro';
 
-changeLanguage('en');
+changeLanguage('pl');
 
 const articles = await getCollection('journal');
 const sortedArticles = getSortedArticles(articles);
@@ -14,4 +15,8 @@ const featuredArticles = sortedArticles.filter(({ data }) => data.featured);
 
 <Layout title={t('pageTitle')}>
   <Header />
+
+  <!-- content -->
+
+  <Footer />
 </Layout>

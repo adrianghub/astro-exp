@@ -1,0 +1,25 @@
+---
+import { SOCIALS } from '@config';
+import Link from './Link.astro';
+import socialIcons from '@assets/social-icons';
+
+export interface Props {
+  centered?: boolean;
+}
+
+const { centered = false } = Astro.props;
+---
+
+<div class={`flex-wrap justify-center gap-1 ${centered ? 'flex' : ''}`}>
+  {
+    SOCIALS.filter((social) => !social.hidden).map((social) => (
+      <Link
+        href={social.href}
+        className="link p-2 hover:rotate-6 sm:p-1"
+        title={social.linkTitle}
+      >
+        <Fragment set:html={socialIcons[social.name]} />
+      </Link>
+    ))
+  }
+</div>

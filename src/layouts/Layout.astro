@@ -54,6 +54,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
 
     <HeadHrefLangs />
+
+    <script is:inline src="/toggle-theme.js"></script>
   </head>
   <body>
     <slot />

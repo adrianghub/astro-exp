@@ -44,7 +44,6 @@ ${Object.keys(emojisObject)
     },
   ],
   rules: {
-    "header-match-team-pattern": [2, "always"],
     "explained-emoji-enum": [
       2,
       "always",
