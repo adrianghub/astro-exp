@@ -12,7 +12,7 @@ function getPreferTheme() {
     : 'light';
 }
 
-const themeValue = getPreferTheme();
+let themeValue = getPreferTheme();
 
 function setPreference() {
   localStorage.setItem('theme', themeValue);
