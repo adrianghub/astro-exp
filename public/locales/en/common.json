@@ -8,5 +8,8 @@
       "tags": "Tags",
       "contact": "Contact"
     }
+  },
+  "footer": {
+    "rights": "All rights reserved."
   }
 }

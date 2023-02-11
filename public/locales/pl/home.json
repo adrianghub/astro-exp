@@ -1,0 +1,13 @@
+{
+  "title": "Strona główna",
+  "hero": {
+    "title": "Software Developer",
+    "description": "Zajrzyj na <0>artykuły</0> lub odwiedź stronę <1>O mnie</1> po więcej informacji.",
+    "socials": "Znajdziesz mnie w social mediach:"
+  },
+  "section": {
+    "featuredArticles": "Wyróżnione artykuły",
+    "recentArticles": "Ostatnie artykuły"
+  },
+  "allArticles": "Wszystkie artykuły"
+}

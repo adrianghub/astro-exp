@@ -1,0 +1,13 @@
+{
+  "title": "Home",
+  "hero": {
+    "title": "Software Developer",
+    "description": "Take a look at <0>articles</0> or check out <1>about</1> page for more information.",
+    "socials": "You can find me on social media:"
+  },
+  "section": {
+    "featuredArticles": "Featured articles",
+    "recentArticles": "Recent articles"
+  },
+  "allArticles": "All articles"
+}
