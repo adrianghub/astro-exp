@@ -1,7 +1,9 @@
 ---
+import '@/styles/resets.css';
+import '@/styles/globals.css';
+
 import i18next from 'i18next';
 import { SITE } from '@config';
-import '../styles/base.css';
 import { HeadHrefLangs } from 'astro-i18next/components';
 
 export interface Props {
@@ -10,11 +12,7 @@ export interface Props {
   description?: string;
 }
 
-const {
-  title = SITE.title,
-  author = SITE.author,
-  description = SITE.desc
-} = Astro.props;
+const { title = SITE.title, author = SITE.author, description = SITE.desc } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -45,10 +43,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
